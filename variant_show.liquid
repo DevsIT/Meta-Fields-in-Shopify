@@ -1,0 +1,129 @@
+{% if product.metafields.my_fields.color_variant_1 != blank or product.metafields.my_fields.color_variant_2 != blank or product.metafields.my_fields.color_variant_3 != blank or product.metafields.my_fields.color_variant_4 != blank or product.metafields.my_fields.color_variant_5 != blank %}
+
+
+
+<style>
+  .colour-option {
+    margin-top: 24px;
+  }
+  .ProductForm__SelectedValue {
+    text-transform: uppercase;
+    font-family: Montserrat !important;
+    font-size: 12px;
+    color: #3C3C3C;
+  }
+  .ColorImage {
+    border-radius: 100%;
+    width: 36px!important;
+    height: 36px!important;
+    max-width: 36px!important;
+    max-height: 36px!important;
+    display: inline-block;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .colour-option .ColorSwatchList .HorizontalList__Item {
+    margin: 0 !important;
+    padding: 0 5px;
+    line-height: 1;
+  }
+  .colour-option .ProductForm__Label {
+    text-transform: uppercase;
+    font-family: Montserrat !important;
+    font-size: 12px;
+  }
+  .ColorImage::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    top: -3px;
+    left: -3px;
+    border-radius: 50%;
+  }
+  .ColorImage > img {
+    border-radius: 50%;
+  }
+  .colour-option .ColorSwatchList .HorizontalList__Item:first-child {
+    padding-left: 0;
+  }
+  .ColorImage:hover::after {
+    border: 1px solid var(--border-color);
+      }
+</style>
+
+
+
+
+
+{%- assign first_custom_product = product.metafields.my_fields.main_color_product -%}
+
+
+<div class="colour-option">
+  <h4 class="ProductForm__Label">Color: 
+    <span class="ProductForm__SelectedValue">
+      {{ first_custom_product }}
+    </span>
+  </h4>
+
+  <ul class="ColorSwatchList HorizontalList HorizontalList--spacingTight">
+
+    {% if product.metafields.my_fields.color_variant_1 != blank %}
+    <li class="HorizontalList__Item">
+      <a class="ColorImage"
+         style="background-image: url({{ product.metafields.my_fields.color_variant_1_image | img_url: "50x50" }});"
+         href="{{ product.metafields.my_fields.color_variant_1 }}">
+
+      </a>
+    </li>
+    {% endif %}
+
+    {% if product.metafields.my_fields.color_variant_2 != blank %}
+    <li class="HorizontalList__Item">
+      <a class="ColorImage" 
+         style="background-image: url({{ product.metafields.my_fields.color_variant_2_image | img_url: "50x50" }});"
+         href="{{ product.metafields.my_fields.color_variant_2 }}">
+      </a>
+    </li>
+    {% endif %}
+
+
+    {% if product.metafields.my_fields.color_variant_3 != blank %}
+    <li class="HorizontalList__Item">
+      <a class="ColorImage" 
+         style="background-image: url({{ product.metafields.my_fields.color_variant_3_image | img_url: "50x50" }});" 
+         href="{{ product.metafields.my_fields.color_variant_3 }}">
+      </a>
+    </li>
+    {% endif %}
+
+
+    {% if product.metafields.my_fields.color_variant_4 != blank %}
+    <li class="HorizontalList__Item">
+      <a class="ColorImage"
+         style="background-image: url({{ product.metafields.my_fields.color_variant_4_image | img_url: "50x50" }});"
+         href="{{ product.metafields.my_fields.color_variant_4 }}">
+      </a>
+    </li>
+    {% endif %}
+
+    {% if product.metafields.my_fields.color_variant_5 != blank %}
+    <li class="HorizontalList__Item">
+      <a class="ColorImage" 
+         style="background-image: url({{ product.metafields.my_fields.color_variant_5_image | img_url: "50x50" }});"
+         href="{{ product.metafields.my_fields.color_variant_5 }}">
+      </a>
+    </li>
+    {% endif %}
+
+
+  </ul>
+
+</div>
+
+
+
+{% endif %}
+
+
